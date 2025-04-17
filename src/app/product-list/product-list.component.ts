@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-list',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
-  name: string = 'ding';
+  products: Product[] = [
+    { id: 1, title: 'Keyboard' },
+    { id: 2, title: 'Microphone' },
+    { id: 3, title: 'Web camera' },
+    { id: 4, title: 'Tablet' },
+  ];
+  selectedProduct: Product | undefined;
 }

@@ -20,11 +20,4 @@ describe('ProductListComponent', () => {
   it('should create', () => {
     expect(productList).toBeTruthy();
   });
-
-  it(`should render ding`, () => {
-    const fixture = TestBed.createComponent(ProductListComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h2')?.textContent).toContain('ding');
-  });
 });
