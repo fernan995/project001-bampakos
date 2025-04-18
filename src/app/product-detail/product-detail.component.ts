@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { ChangeDetectionStrategy, Component, input, output, OnInit, OnDestroy } from '@angular/core';
-=======
-import { ChangeDetectionStrategy, Component, input, output, OnInit } from '@angular/core';
->>>>>>> 8631fa2df794fc1edc29f6c05a3b11ab76c1f47d
+import { Component, DestroyRef, input, output } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -10,18 +6,15 @@ import { Product } from '../product';
   imports: [],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-<<<<<<< HEAD
-export class ProductDetailComponent implements OnDestroy {
-=======
-export class ProductDetailComponent implements OnInit {
->>>>>>> 8631fa2df794fc1edc29f6c05a3b11ab76c1f47d
+export class ProductDetailComponent {
   product = input<Product>();
   added = output<Product>();
 
-  constructor() {
-    console.log('Product: ', this.product());
+  constructor(destroyRef: DestroyRef) {
+    destroyRef.onDestroy(() => {
+      
+    });
   }
 
   addToCart(): void {
@@ -32,12 +25,4 @@ export class ProductDetailComponent implements OnInit {
     return this.product()!.title;
   }
 
-<<<<<<< HEAD
-  ngOnDestroy(): void {
-    
-=======
-  ngOnInit(): void {
-    console.log('Product: ', this.product());
->>>>>>> 8631fa2df794fc1edc29f6c05a3b11ab76c1f47d
-  }
 }
