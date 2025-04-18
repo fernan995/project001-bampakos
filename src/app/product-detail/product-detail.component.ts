@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, OnInit, OnDestroy } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -8,9 +8,13 @@ import { Product } from '../product';
   styleUrl: './product-detail.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnDestroy {
   product = input<Product>();
   added = output<Product>();
+
+  constructor() {
+    console.log('Product: ', this.product());
+  }
 
   addToCart(): void {
     this.added.emit(this.product()!);
@@ -18,5 +22,9 @@ export class ProductDetailComponent {
 
   get productTitle() {
     return this.product()!.title;
+  }
+
+  ngOnDestroy(): void {
+    
   }
 }
