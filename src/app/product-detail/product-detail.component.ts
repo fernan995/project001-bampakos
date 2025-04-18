@@ -15,4 +15,8 @@ export class ProductDetailComponent {
   addToCart(): void {
     this.added.emit(this.product()!);
   }
+
+  get productTitle() {
+    return this.product()!.title;
+  }
 }
