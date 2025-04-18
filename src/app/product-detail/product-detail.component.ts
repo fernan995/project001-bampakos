@@ -1,4 +1,4 @@
-import { Component, DestroyRef, input, output } from '@angular/core';
+import { Component, DestroyRef, input, output, OnChanges, SimpleChanges } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -7,13 +7,13 @@ import { Product } from '../product';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnChanges {
   product = input<Product>();
   added = output<Product>();
 
   constructor(destroyRef: DestroyRef) {
     destroyRef.onDestroy(() => {
-      
+
     });
   }
 
@@ -25,4 +25,13 @@ export class ProductDetailComponent {
     return this.product()!.title;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    const product = changes['product'];
+    if (!product.isFirstChange()) {
+      const oldValue = product.previousValue;
+      const newValue = product.currentValue;
+      console.log('Old value', oldValue);
+      console.log('New value', newValue);
+    }
+  }
 }
