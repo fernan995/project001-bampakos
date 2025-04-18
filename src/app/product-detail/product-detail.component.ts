@@ -1,4 +1,4 @@
-import { Component, input, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, ViewEncapsulation } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -6,7 +6,7 @@ import { Product } from '../product';
   imports: [],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent {
   product = input<Product>();
